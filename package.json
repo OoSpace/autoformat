@@ -1,0 +1,22 @@
+{
+  "name": "autoformat",
+  "version": "1.0.0",
+  "description": "autoformat front tools",
+  "main": "autoformat.js",
+  "scripts": {
+    "test": "null"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OoSpace/autoformat.git"
+  },
+  "keywords": [
+    "autoformat"
+  ],
+  "author": "oospace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OoSpace/autoformat/issues"
+  },
+  "homepage": "https://github.com/OoSpace/autoformat#readme"
+}
