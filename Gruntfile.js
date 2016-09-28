@@ -4,20 +4,20 @@ module.exports = function (grunt) {//所有的代码必须放在这个里面
   grunt.initConfig({//初始化配置
 
     //任务一：压缩合并常用js库
-    lib: grunt.file.readJSON('json/lib.json'),//读取json文件配置信息
+    lib: grunt.file.readJSON('json/libs.json'),//读取json文件配置信息
     uglify: {//任务名，看最后一行代码就明白了
       options: {//文件的一些描述信息，可按需配置
-        banner: '/*! <%= lib.file %> \n<%= lib.author %> \n<%= lib.description %> \n<%= lib.version %> \n<%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= libs.file %> \n<%= libs.author %> \n<%= libs.description %> \n<%= libs.version %> \n<%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
         //需要压缩合并的文件目录src,后面拼接的是上面json文件中file字段
         //src: 'src/<%=pkg.file %>.js',
         //多个文件
-        src: ['src/lib/jquery-1.11.3.js','src/lib/backbone.js', 'src/lib/underscore.js','src/lib/swiper.min.js','src/lib/zmd5.js'],
+        src: ['src/libs/jquery-1.11.3.js','src/libs/backbone.js', 'src/libs/underscore.js','src/libs/swiper.min.js','src/libs/zmd5.js'],
         //也可以
         //src: ['src/<%=pkg.file %>.js', 'src/<%=pkg.file1 %>.js'],
         //压缩合并后放置的文件目录dest
-        dest: 'js/<%= lib.file %>.min.js'
+        dest: 'js/<%= libs.file %>.min.js'
       }
     },
 
@@ -31,7 +31,7 @@ module.exports = function (grunt) {//所有的代码必须放在这个里面
         //需要压缩合并的文件目录src,后面拼接的是上面json文件中file字段
         src: 'src/<%=main.file %>.js',
         //多个文件
-        //src: ['src/lib/jquery-1.11.3.js','src/lib/backbone.js', 'src/lib/underscore.js','src/lib/swiper.min.js','src/lib/zmd5.js'],
+        //src: ['src/libs/jquery-1.11.3.js','src/libs/backbone.js', 'src/libs/underscore.js','src/libs/swiper.min.js','src/libs/zmd5.js'],
         //也可以
         //src: ['src/<%=pkg.file %>.js', 'src/<%=pkg.file1 %>.js'],
         //压缩合并后放置的文件目录dest
