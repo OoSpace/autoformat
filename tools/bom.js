@@ -3,10 +3,37 @@
  * browser
  */
 //window
+setTimeout()
+setInterval()
 
 //location
+window.location===document.location //总是true，因为window对象和document对象的location属性都是引用的Location对象
 
-//navigator
+document.URL//文档首次载入的URL静态字符串，如果用锚点重新定位如#mark，Location会改变，URL却不会改变
+
+location.toString()==location.href;
+
+location.protocol
+location.host
+location.hostname
+location.port
+location.pathname
+location.hash //返回url中的片段标识符的部分
+location.search()//返回的问号之后的url
+location.assign(url);
+location.replace(url);
+location.reload(boolean);
+location.search="?pageIndex=123";//这些分解属性可写，会跳转到下一个页面
+
+//navigator 为了纪念网景浏览器
+navigator.appName //web浏览器的全称，如""为了兼容，大部分都是'Netscape'
+navigator.appVersion //版本
+navigator.userAgent //浏览器的绝大部分信息
+navigator.platform //运行浏览器的操作系统的信息字符串（可能是硬件）
+navigator.onLine //
+navigator.geolocation //地理位置
+navigator.javaEnabled();//浏览器可以运行Java小程序时返回true;
+navigator.cookieEnabled//非标准的方法，当浏览器可以保存永久cookie返回true,当cookie配置为视情况而定时，返回值可能不正确
 
 //screen
 
@@ -17,6 +44,7 @@ history.go(-1);//也是返回当前页的上一页，不过表单里的数据全
 history.back(0);//刷新 
 history.back(1);//前进 
 history.back(-1);//后退
+//如果窗口内包含多个子窗口，则有可能导致子窗口回退，而主窗口不变
 
 //希望最终停在B页，不想点B页浏览器返回按钮，返回到A页，则在A页加：
 $(document).ready(function(){
