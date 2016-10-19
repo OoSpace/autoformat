@@ -13,31 +13,54 @@ document.URL//文档首次载入的URL静态字符串，如果用锚点重新定
 
 location.toString()==location.href;
 
-location.protocol
-location.host
+location.protocol //协议
+location.host //主机
 location.hostname
 location.port
 location.pathname
 location.hash //返回url中的片段标识符的部分
 location.search()//返回的问号之后的url
-location.assign(url);
-location.replace(url);
-location.reload(boolean);
+location.assign(url);//载入新文档
+location.replace(url);//载入新文档
+location.reload(boolean);//重新加载
 location.search="?pageIndex=123";//这些分解属性可写，会跳转到下一个页面
 
-//navigator 为了纪念网景浏览器
+//navigator 浏览器信息 为了纪念网景浏览器
 navigator.appName //web浏览器的全称，如""为了兼容，大部分都是'Netscape'
 navigator.appVersion //版本
 navigator.userAgent //浏览器的绝大部分信息
 navigator.platform //运行浏览器的操作系统的信息字符串（可能是硬件）
-navigator.onLine //
+navigator.onLine //是否联网
 navigator.geolocation //地理位置
 navigator.javaEnabled();//浏览器可以运行Java小程序时返回true;
 navigator.cookieEnabled//非标准的方法，当浏览器可以保存永久cookie返回true,当cookie配置为视情况而定时，返回值可能不正确
 
 //screen
+window.screen.width//窗口大小
+window.screen.height
+window.screen.availHeight//实际可用的大小
+window.screen.availWidth
+window.screen.colorDepth//BPP ,典型的有16,24和32
 
-
+//对话框
+window.alert();//大多数浏览器都会产生阻塞，但是也有例外
+var bole=window.confirm('确定要XXX')//阻塞进程
+var str=window.prompt('请输入XXXX')// 阻塞进程
+var dialog=window.showModalDialog(url,{}||[],'dialogwidth=80;dialogheight=80;resizable=yes');//模态窗口
+//注意：模态窗口中的第二个参数可以在第一个url引用的页面中用js获取
+var args=dialogArguments;//可能为对象或数组
+dialog.close();//关闭窗口
+var wd=window.open('http://xicer.com',
+    '_blank',
+    'z-index=1,width=300px,height=100px,top=300px,left='
+    +(screenWidth/2-150)
+    +'px');
+wd.close();
+//错误处理
+window.onerror=function (msg,url,line) {
+    console.log("Error:"+msg+"\n"+url+"\n"+line)//此处的文字颜色大小等都可以修改
+    return true;//false表示告诉浏览器已经处理了错误，Firefox浏览器用返回true表示处理了错误
+}
 //history
 history.back(-1);//直接返回当前页的上一页，数据全部消息，是个新页面
 history.go(-1);//也是返回当前页的上一页，不过表单里的数据全部还在

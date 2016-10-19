@@ -44,6 +44,9 @@ function urlArgs() {
     return args;
 }
 //打开不带地址栏和状态栏的新窗口
+//注：打开的url可为空，当url不为空时，即使后来被覆盖掉，但是如果F5刷新页面也会重新显示url的页面
+//IE8下url不能被覆盖
+//注意，关键是z-index=1这句，也可改为top=1,不过感觉不如前者标准
 var screenWidth=window.screen.availWidth;
 var win =
     window.open(
@@ -53,6 +56,15 @@ var win =
         +(screenWidth/2-150)
         +'px');
 win.document.write("你好");
-//注：打开的url可为空，当url不为空时，即使后来被覆盖掉，但是如果F5刷新页面也会重新显示url的页面
-//IE8下url不能被覆盖
-//注意，关键是z-index=1这句，也可改为top=1,不过感觉不如前者标准
+/**
+ * 获取浏览器版本和信息
+ * @type {Function}
+ */
+var browser=(function () {
+    var s=navigator.userAgent.toLowerCase();
+    var match=/(webkit)[\/]([\w.]+)/.exec(s)||
+            /(opera)(?:.*version)?[\/]([\w.]+)/.exec(s) ||
+            /(msie)([\w.]+)/.exec(s) ||
+            !/complete/.test(s)&&/(mozilla)(?:.*? rv:([\w.]+))?/.exec(s)||[];
+    return {name:match[1]||'',version:match[2]||'0'};
+})
