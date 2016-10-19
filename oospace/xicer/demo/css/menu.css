@@ -1,0 +1,428 @@
+@CHARSET "UTF-8";
+body {
+    min-width:700px;
+    font-family:微软雅黑;
+}
+a{
+	text-decoration: none;
+	color:#428abc;
+}
+a:hover {
+    text-decoration: underline;
+}
+/*li:hover {
+        color: #fff;
+        background-color:#800370;
+}*/
+.menus a {
+    text-decoration:none;
+    color:grey;
+}
+.menus a:hover {
+    text-decoration:underline;
+    color:#ffffff;
+}
+.menus {
+    width:200px;
+    margin-left:23px;
+    float:left;
+}
+.menus > ol {
+    
+    /*width:300px;*/
+     /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    /*box-shadow: 1px 1px 1px -1px #000;
+     /*Firefox4.0-*/
+    /*-moz-box-shadow: 1px 1px 1px -1px #000;
+    /*Safari and Google chrome10.0-*/
+    /*-webkit-box-shadow: 1px 1px 1px -1px #000;
+    /*border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;*/
+    margin:2px;
+    color:grey;
+}
+.menus li {
+	text-decoration:none;
+    list-style:none;
+    font-family:Arial;
+    /*border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;*/
+     /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    /*box-shadow: 1px 1px 1px -1px #000;*/
+     /*Firefox4.0-*/
+    /*-moz-box-shadow: 1px 1px 1px -1px #000;*/
+    /*Safari and Google chrome10.0-*/
+    /*-webkit-box-shadow: 1px 1px 1px -1px #000;*/
+    border:1px solid grey;
+   	border-top:none;
+    line-height:25px;
+    height:25px;
+    min-height:25px;
+    background-color:#408080;
+    background-color:#333333;
+    
+    background-color:#737300;
+    color:#000000;
+    background-color:#ffffff;
+    /*margin:4px;*/
+    /*width:300px;*/
+    cursor:pointer;
+    font-size:16px;
+    padding-left:5px;
+    padding-right:5px;
+    /*width:200px;*/
+    padding-top:3px;
+    padding-bottom:3px;
+    text-align: center;
+    /*padding-left:20px;*/
+     /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    /*box-shadow: 1px 1px 1px 0px #000;
+     /*Firefox4.0-*/
+    /*-moz-box-shadow: 1px 1px 1px 0px #000;*/
+    /*Safari and Google chrome10.0-*/
+    /*-webkit-box-shadow: 1px 1px 1px 0px #000;*/
+}
+.first{
+	background-color:#428abc;
+	padding-left:0;
+	width:200px;
+	display:none;
+}
+.second{
+	padding-left:0px;
+	margin-left:193px;
+	position:absolute;
+	width:200px;
+	margin-top:-28px;
+	border:1px solid #8ea8bc;
+}
+.second li{
+	border:none;
+}
+.third{
+	display:block;
+	margin-top:-28px;
+	width:200px;
+	left:179px;
+	padding-left:0px;
+	margin-right:60px;
+	position:absolute;
+	z-index:9999999;
+	border:1px solid #8ea8bc;
+}
+.fouth{
+	display:none;
+	width:200px;
+	border:1px solid #8ea8bc;
+	position:absolute;
+	margin-top:-28px;
+	padding-left:0;
+	left:199px;
+	z-index:999999999;
+	
+}
+.second  a{
+	color:grey;
+}
+.third  a{
+	color:grey;
+}
+/*.first>li:hover >ol >li{
+	background-color:#3C3C3C;
+}
+.second>li:hover >ol> li{
+	background-color:grey;
+}*/
+.first>li:hover{
+	background-color:#548C00;
+	background:#ECF5FF url(../images/sprites.png) right  -225px no-repeat;
+}
+.first>li:hover > a{
+	color:grey;
+}
+.focus{
+	background-color:#548C00;
+}
+.second>li:hover{
+	background-color:#842B00;
+	background:#ECF5FF url(../images/sprites.png) right  -225px no-repeat;
+}
+.second>li:hover > a{
+	color:grey;
+}
+.third>li:hover{
+	background-color:#ECF5FF;
+	
+}
+.third>li:hover a{
+	color:grey;
+	
+}
+
+.second>li>ol{
+	padding-left:0px;
+	margin-left:20px;
+	/*background-color:#66B3FF;*/
+}
+ol >li >ol >li >ol >li{
+	
+}
+/*hide*/
+.menus ol ol {
+    display:none;
+}
+.text{
+	border:1px solid #000000;
+	height:28px;
+	font-size:16px;
+	width:194px;
+	width:193px\0;
+	margin-left:2px;
+	padding-left:4px;
+	line-height:28px\0;
+	
+	outline:none;
+	 /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    box-shadow: 1px 1px 1px -1px #000;
+     /*Firefox4.0-*/
+    -moz-box-shadow: 1px 1px 1px -1px #000;
+    /*Safari and Google chrome10.0-*/
+    -webkit-box-shadow: 1px 1px 1px -1px #000;
+}
+.search{
+	position:absolute;
+	width: 18px;
+	z-index:3;
+	height: 17px;
+	border: 0;
+	margin-top:-23px;
+	margin-left:180px;
+	margin-top:7px\0;
+	margin-left:-30px\0;
+	text-indent: -9999px;
+	background: url(../images/sprites.png) left -178px;
+	cursor: pointer;
+}
+.h4{
+	border:1px solid #000000;
+	background-color:#428bac;
+	margin-left:2px;
+	padding:2px 0px 0px 2px;
+	font-size:16px;
+	color:#ffffff;
+	height:30px;
+	width:196px;
+	margin-bottom:-2px;
+	 /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    box-shadow: 1px 1px 1px -1px #000;
+     /*Firefox4.0-*/
+    -moz-box-shadow: 1px 1px 1px -1px #000;
+    /*Safari and Google chrome10.0-*/
+    -webkit-box-shadow: 1px 1px 1px -1px #000;
+	
+}
+
+.ht{
+	border:1px solid #000000;
+    background-color:#737300;
+	background-color:#408080;
+    
+    background-color:#5b5b5b;
+    color:#428bac;
+	margin-left:2px;
+	padding:5px 0px 2px 2px;
+	font-size:16px;
+	color:#333333;
+	height:25px;
+	width:196px;
+	margin-top:-3px;
+	font-weight:lighter;
+	text-align:center;
+	background: url(../images/sprites.png) #D2E9FF -55px -102px no-repeat;
+	margin-bottom:-2px;
+	 /*Firefox4.0+ Google chrome 10.0+ Opera10.5 and IE9*/
+    box-shadow: 1px 1px 1px -1px #000;
+     /*Firefox4.0-*/
+    -moz-box-shadow: 1px 1px 1px -1px #000;
+    /*Safari and Google chrome10.0-*/
+    -webkit-box-shadow: 1px 1px 1px -1px #000;
+	cursor: pointer;
+	
+	-moz-user-select: none; /*火狐*/
+    -webkit-user-select: none;  /*webkit浏览器*/
+    -ms-user-select: none;   /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+.fctitle{
+	background: url(../images/sprites.png) #D2E9FF -55px -127px no-repeat;
+}
+.Ts2{
+	margin-left:193px;
+	margin-top:-29px;
+	display: none;
+	height:0;
+	width:0;
+}
+.tbD{
+	background-color:#ffffff;
+	border:1px solid #8ea8bc;
+	border-collapse:separate;
+	padding:10px;
+	position:absolute;
+	z-index:9999999;
+}
+.arrow{
+	display:block;
+	position:absolute;
+	z-index:99999999999;
+	height:30px;
+	min-height:30px;
+	width:35px;
+	min-width:35px;
+	background:#ffffff url(../images/sprites.png) right  -225px no-repeat;
+	border:1px solid #8ea8bc;
+	border-right:none;
+	margin-top:-28px;
+	margin-left:159px;
+	display:none;
+}
+.tbD th{
+	height:30px;
+}
+.tbD td{
+	vertical-align:top;
+	width:140px;
+	min-width:140px;
+	height:29px;
+	min-height:30px;
+	color:grey;
+}
+.tbD li{
+	border:none;
+}
+.tbD td:hover{
+	color:grey;
+	background-color:#842B00;
+	background:#ECF5FF url(../images/sprites.png) right  -225px no-repeat;
+}
+.tbD td:hover > .third{
+	display: block;
+}
+.tbD td:hover > .arrow{
+	display: block;
+}
+.biaoti{
+	position:absolute;
+	clear:both;
+	background-color:#f5f5f5;
+	color:#428bac;
+	height:30px;
+	width:1000px;
+}
+.Tsecond{
+	position:absolute;
+	border:none;
+	box-shadow:none;
+}
+
+.Tsecond  li{
+	background-color:transparent;
+	box-shadow:none;
+	width:160px;
+	height:30px;
+	text-align: left;
+}
+.Tsecond >li:hover{
+	background-color:#842B00;
+	background:#842B00 url(../images/sprites.png) right  -225px no-repeat;
+}
+.Tsecond > li a{
+	color:grey;
+}
+.Tsecond > li a:hover{
+	color:#428abc;
+}
+.Tsecond > .third{
+	position:inherit;
+	margin-right:200px;
+}
+.Tsecond  .third li{
+	background-color:#f9f9f9;
+	border:none;
+	box-shadow:none;
+}
+.Tsecond .third li a{
+	color:grey;
+}
+.first > li:hover .Ts2{
+	display:block;
+}
+.first > li:hover > .arrow{
+	display:block;
+}
+.second >li:hover >.arrow{
+	display:block;
+}
+.third >li:hover > .arrow{
+	display:block;
+}
+.third >li:hover > .fouth{
+	display:block;
+}
+/* style the top level hover */
+/*.menus a:hover, .menus ol ol a:hover{ 
+    color:#fff; 
+    background:#650549; 
+}*/ 
+/*.menu:hover>a表示鼠标划过具有类menu的元素时，其子元素链接a的样式应该是什么样的。*/
+/*.menus :hover > a, .menus ol ol :hover > a { 
+    color:#fff; 
+    background:#6600FF; 
+}*/ 
+ /*.menus ol ol a{ 
+    width:300px;  
+}*/ 
+/* style the second level hover */
+/*.menus ol ol a.drop:hover{ 
+    background:#FF00FF url(../img/drop.gif) bottom right no-repeat; 
+}*/ 
+/*.menus ol ol :hover > a.drop { 
+    background:#FF0033 url(../img/drop.gif) bottom right no-repeat; 
+}*/ 
+/* style the third level background */
+/*.menus ol ol ol a, .menus ol ol ol a:visited { 
+    background:#99CC33; 
+}*/ 
+/* style the third level hover */
+/*.menus ol ol ol a:hover { 
+    background:#33CC00; 
+}*/ 
+/* style the second level links */
+/*.menus ol ol a, .menu ol ol a:visited { 
+    background:#33FF33; 
+    color:#000; 
+    height:auto; 
+    line-height:1em; 
+    padding:5px 10px; 
+    width:129px
+    /* yet another hack for IE5.5 */
+/*}*/ 
+/* make the second level visible when hover on first level list OR link  */
+.menus ol li:hover >ol, 
+.menus ol a:hover >ol{ 
+    display:block; 
+} 
+/* keep the third level hidden when you hover on first level list OR link */
+.menus ol :hover ol > ol{ 
+    display:none; 
+} 
+
+/* make the third level visible when you hover over second level list OR link */
+.menus ol :hover ol :hover> ol{ 
+    display:block; 
+}

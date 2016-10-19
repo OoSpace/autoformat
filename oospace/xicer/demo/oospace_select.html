@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>模拟下拉框</title>
+<style>
+	.os_select{
+		height:34px;
+		width:120px;
+		line-height:34px;
+		display:none;
+		/*border:1px solid #dcdcdc; */
+		position:absolute;
+		z-index:999;
+		margin:0;
+		padding:0;
+	}
+	.os_select > li{
+		list-style:none;
+		border:1px solid #ececec;
+		/* border-top:0; */
+		height:34px;
+		width:150px;
+		display:block;
+		line-height:34px;
+		text-align:center;
+		font-weight:normal;
+		font-family:宋体;
+		font-size:16px;
+		margin-left:1px\0;
+		-moz-margin-left:1px;
+	}
+	.os_select > li:hover{
+		background-color:#ececec;
+		cursor:default;
+	}
+	.os_choose{
+		cursor:default;
+		font-family:宋体;
+		font-weight:normal;
+		font-size:16px;
+		border:1px solid grey;
+		/* border-top:0; */
+		height:34px;
+		width:150px;
+		line-height:34px;
+		text-align:center;
+		background:url('img/ularrow.png') #fff 123px 10px no-repeat;
+		-moz-user-select: none; /*火狐*/
+		-webkit-user-select: none; /*webkit浏览器*/
+		-ms-user-select: none; /*IE10*/
+		-khtml-user-select: none; /*早期浏览器*/
+		user-select: none;
+	}
+	
+</style>
+</head>
+<body>
+		<input id="os_choose"  class="os_choose" type="text" value="请选择" readonly="readonly" />
+		<ul id="os_select" class="os_select">
+			<li>北京</li>
+			<li>上海</li>
+			<li>广州</li>
+			<li>深圳</li>
+		</ul>
+</body>
+<script type="text/javascript" src="js/comm.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	showSelect("os_choose","os_select");
+	chooseValue("os_choose","os_select");
+	
+	/*showSelect("os_choose0","os_select0");
+	chooseValue("os_choose0","os_select0");
+	
+	showSelect("os_choose1","os_select1");
+	chooseValue("os_choose1","os_select1");*/
+};
+
+function showSelect(input,selct){
+	var iput=document.getElementById(input);
+	var select=document.getElementById(selct);
+	
+	addEvent(iput, "click", function(e){
+		var obj=getObject(e);
+		var els=obj.cls();
+		
+		if(els.indexOf("fcs")!=-1){
+			iput.setAttribute("class","os_choose");
+			select.style.display="none";
+		}else{
+
+			$(".os_select").hide();
+			$(".os_choose").attr("class","os_choose");
+
+			iput.setAttribute("class","os_choose fcs");
+			select.style.display="block";
+		}
+		
+	});
+	addEvent(document, "click", function(e){
+		var obj=getObject(e);
+		var els=obj.event();
+		if(obj.cls()!="os_choose fcs"&&els.parentNode!="select"){	
+			select.style.display="none";
+			iput.setAttribute("class","os_choose");
+		}
+	});
+}
+
+function chooseValue(input,selct){
+	var select=document.getElementById(selct);
+	addEvent(select, "click", function(e){
+		var obj=getObject(e);
+		var txt=obj.target().innerHTML;
+		var os_choose=document.getElementById(input);
+		os_choose.value=txt;
+		select.style.display="none";
+		os_choose.setAttribute("class","os_choose");
+	});
+}
+</script>
+</html>

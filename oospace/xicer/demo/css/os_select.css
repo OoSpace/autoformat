@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+.os_select {
+	clear:both;
+	height: 34px;
+	line-height: 34px;
+	display: none;
+/* 	width: 150px !important; */
+/*	border:1px solid #c4c4c4;*/
+	position: absolute;
+	z-index: 999;
+	margin: 0;
+	padding: 0;
+}
+
+.os_select>li {
+	clear:both;
+	list-style: none;
+	border-left: 1px solid #c4c4c4;
+	border-right: 1px solid #c4c4c4;
+	border-bottom: 1px solid #c4c4c4;
+	/* border-top:0; */
+	height: 34px;
+	width: 133px !important;
+	display: block;
+	line-height: 34px;
+	text-align: center;
+	font-weight: normal;
+	background-color:#ffffff;
+	font-family: 宋体;
+	font-size: 16px;
+}
+.os_select>li:hover {
+	background-color: #f5f5f5;
+	cursor: default;
+}
+
+.os_choose {
+	cursor: default;
+	font-family: 宋体;
+	font-weight: normal;
+	font-size: 14px;
+	color:#404040;
+	border: 1px solid #c4c4c4;
+	/* border-top:0; */
+	height: 34px;
+	width:133px !important;
+	line-height: 34px;
+	text-align: center;
+	background: url('../img/ularrow.png') #fff 108px 10px no-repeat\0;
+	background: url('../img/ularrow.png') #fff  right 5px  top 10px no-repeat;
+	-moz-user-select: none; /*火狐*/
+	 -webkit-user-select: none; /*webkit浏览器*/
+	 -ms-user-select: none; /*IE10*/
+	 -khtml-user-select: none; /*早期浏览器*/
+	 user-select: none;
+}

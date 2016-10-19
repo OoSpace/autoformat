@@ -1,0 +1,363 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="renderer" content="webkit"/>
+ <meta http-equiv="X-UA-Compatible" content="IE=11;IE=10;IE=9; IE=8;" /> 
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11;IE=EmulateIE10;IE=EmulateIE9;IE=EmulateIE8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>图片切割插件</title>
+<style>
+.container {
+	position: absolute;
+	border: 1px solid black;
+	border-radius: 3px;
+	background-color: #000000;
+}
+
+.imgLayer {
+	border: 1px solid black;
+	position: absolute;
+}
+
+.controlLayer {
+	position: absolute;
+	zoom: 1;
+	border: 1px dashed black;
+	cursor:move;
+}
+
+.mark {
+	border: 1px solid #000000;
+	background-color: #ffffff;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+	padding: 2px;
+	height: 2px;
+	width: 2px;
+}
+
+.leftTop {
+	position: absolute;
+	top: -3px;
+	margin-left: -3px;
+	cursor: se-resize;
+}
+
+.leftCenter {
+	position: absolute;
+	top: 50%;
+	margin-top:-4px;
+	margin-left: -3px;
+	cursor: w-resize;
+}
+
+.topCenter {
+	position: absolute;
+	margin-top: -3px;
+	left: 50%;
+	margin-left:-4px;
+	cursor: ns-resize;
+}
+
+.rightTop {
+	position: absolute;
+	margin-top: -3px;
+	right: -3px;
+	cursor: ne-resize;
+}
+
+.rightCenter {
+	position: absolute;
+	top: 50%;
+	right: -3px;
+	margin-top:-4px;
+	cursor: e-resize;
+}
+
+.leftBottom {
+	position: absolute;
+	bottom: -3px;
+	left: -3px;
+	cursor: ne-resize;
+}
+
+.bottomCenter {
+	position: absolute;
+	bottom: -3px;
+	left: 50%;
+	margin-left:-4px;
+	cursor: s-resize;
+}
+
+.rightBottom {
+	position: absolute;
+	bottom: -3px;
+	right: -3px;
+	cursor: se-resize;
+	background-color:#428abc;
+}
+
+#imgStyle {
+	display: none;
+}
+
+
+body {
+	font-family: 隶书;
+	font-family: Georgia;
+	-moz-user-select: none; /*火狐*/
+    -webkit-user-select: none;  /*webkit浏览器*/
+    -ms-user-select: none;   /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+}
+
+</style>
+</head>
+<body>
+	<div class="container"></div>
+
+	<div class="imgLayer"></div>
+
+	<div class="controlLayer">
+		<div class="leftTop  mark"></div>
+		<div class="topCenter mark"></div>
+		<div class="rightTop mark"></div>
+		<div class="leftCenter mark"></div>
+		<div class="rightCenter mark"></div>
+		<div class="leftBottom mark"></div>
+		<div class="bottomCenter mark"></div>
+		<div class="rightBottom mark"></div>
+	</div>
+	<img id="imgStyle" src="images/demo.jpg" />
+
+<span> 图片切割插件</span>
+<div id="rect"></div>
+</body>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script>
+	//拖动效果代码
+	//var _z=9999;
+	$(document).ready(function() {
+
+	var img = $(".imgLayer");//图片切割层
+	var ctain = $(".container");//容器
+	var imgStyle = $("#imgStyle")//用来获取图片真实宽度和高度
+
+	//初始化图片地址（注意，只能在onload之前添加图片才有效）	
+	//imgStyle.attr("src", "images/demo.jpg");//图片地址
+	ctain.css({
+				background : "url(images/demo.jpg) green  top  left  no-repeat"
+			});
+	img.css({
+				background : "url(images/demo.jpg) top  left  no-repeat"
+			});
+
+	var _move = false;//移动标记
+	var _x, _y;//鼠标离控件左上角的相对位置
+	var wd;//窗口
+
+	//设置宽度和高度
+
+	$(".controlLayer").click(function() {
+				//alert("click");//点击（松开后触发）
+				//this.style.cursor = "default";//鼠标形状
+				//this.style.zIndex = 999;
+			}).mousedown(function(e) {
+
+				_move = true;//移动
+				_zoom = false;//缩放
+
+				wd = $(this);
+				//this.style.cursor = "move";//鼠标形状
+				//this.style.zIndex = _z;//窗口层次
+				//_z++;
+
+				_x = e.pageX- (isNaN(parseInt(wd.css("left"))) ? 0: parseInt(wd.css("left")));
+				_y = e.pageY- (isNaN(parseInt(wd.css("top"))) ? 0: parseInt(wd.css("top")));
+
+				$(".mark").mousemove(function() {
+					_zoom = true;
+
+				}).mouseup(function() {
+					_zoom = false;
+
+				})
+				/*  wd.fadeTo(20, 0.25); *///点击后开始拖动并透明显示
+				$(document).mousemove(function(e) {
+
+					var x = e.pageX- _x;//移动时根据鼠标位置计算控件左上角的绝对位置
+					var y = e.pageY- _y;
+
+
+					//container容器层
+					var w_ctn = parseInt(ctain
+							.css("width"));
+					var h_ctn = parseInt(ctain
+							.css("height"));
+					var l_ctn = parseInt(ctain
+							.css("left"))-1;//减一是因为border宽度为一，不然控制层偏右下1个像素 ,修正偏离
+					var t_ctn = parseInt(ctain
+							.css("top"))-1;//减一是因为border宽度为一，不然控制层偏右下1个像素 ,修正偏离
+
+					//controlLayer控制层
+					var l_wd = parseInt(wd
+							.css("left"));
+					var t_wd = parseInt(wd
+							.css("top"));
+					var w_wd = parseInt(wd
+							.css("width"));
+					var h_wd = parseInt(wd
+							.css("height"));
+						
+					//imgLayer显示层
+					var imgLeft = parseInt(imgStyle
+							.css("left"));
+					var imgTop = parseInt(imgStyle
+							.css("top"));
+
+					//非空判断
+					l_ctn = isNaN(l_ctn) ? 0
+							: l_ctn;
+					t_ctn = isNaN(t_ctn) ? 0
+							: t_ctn;
+
+
+					//设置控制层的范围
+
+					//左上角范围
+					x=Math.max(l_ctn,Math.min(x,l_ctn+w_ctn));
+					y=Math.max(t_ctn,Math.min(y,t_ctn+h_ctn));
+					//右下角范围
+					x=(x+w_wd)>(l_ctn+w_ctn)?(l_ctn+w_ctn-w_wd):x;
+					y=(y+h_wd)>(t_ctn+h_ctn)?(t_ctn+h_ctn-h_wd):y;
+					
+
+				 	//设置imgLayer的范围
+					var top = y
+							- t_ctn
+							+ "px";
+					var right = parseInt(wd
+							.css("width"))
+							+ x
+							- l_ctn
+							+ "px";
+					var bottom = parseInt(wd
+							.css("height"))
+							+ y
+							- t_ctn
+							+ "px";
+					var left = x
+							- l_ctn
+							+ "px";
+					var rect = "rect( "
+							+ top
+							+ " "
+							+ right
+							+ " "
+							+ bottom
+							+ " "
+							+ left
+							+ " )";
+				if(_move&& !_zoom) {//只是拖动，没有缩放
+
+						wd.css({left : x,top : y});//控件新位置
+						img.css("clip",rect);//显示层位置
+						$("#rect").html(rect);
+					
+
+				 }else if (_move&& _zoom) {//缩放
+
+					wd.css({
+							width : Math.min(e.pageX,l_ctn+w_ctn)- l_wd,
+							height : Math.min(e.pageY,t_ctn+h_ctn)- t_wd
+						}); 
+
+					rect = "rect( "
+						+ (t_wd - t_ctn)
+						+ "px  "
+						+ (e.pageX - l_ctn)
+						+ "px  "
+						+ (e.pageY - t_ctn)
+						+ "px  "
+						+ (l_wd - l_ctn)
+						+ "px )"; 
+				//wd.css({left : x,top : y});//控件新位置
+				img.css("clip",rect);//切割位置
+				$("#rect").html(e.pageX+ " "+ e.pageY);
+			}
+			}).mouseup(
+			function() {
+				_move = false;
+				/* wd.fadeTo("fast", 1); *///松开鼠标后停止移动并恢复成不透明
+			});
+
+});
+
+});
+
+	//初始化
+	window.onload = function() {
+
+		var img = $(".imgLayer");//图片切割层
+		var ctain = $(".container");//容器
+		var imgStyle = $("#imgStyle")//
+		var control = $(".controlLayer");
+
+		var imgWidth = imgStyle.css("width");//注意只能放在window.onload里面，因为只有图片加载完毕以后才能它的获取大小
+		var imgHeight = imgStyle.css("height");
+
+		var imgLeft = 30;//初始化container的位置
+		var imgTop = 90;
+
+		img.css({
+			width : imgWidth,
+			height : imgHeight//,
+			//marginTop:1,
+			//marginLeft:1
+		});//根据图片本身大小自动设置容器层container和图片切割层的大小
+		ctain.css({
+			//backgroundColor:"green",
+			width : imgWidth,
+			height : imgHeight,
+			opacity : "0.5",
+			filter : "alpha(opacity=50)",
+			left : imgLeft + "px",
+			top : imgTop + "px"
+		});
+
+		var lf = imgLeft;//初始化控制层controlLayer大小及切割显示层imgLayer大小
+		var tp = imgTop;
+		var wt = ht = 90;
+
+		lf = isNaN(lf) ? 0 : lf;
+		tp = isNaN(tp) ? 0 : tp;
+
+		//调整三层的位置
+		control.css({
+			left : lf-1 + "px",//减一是因为border宽度为一，不然控制层偏右下1个像素 
+			top : tp-1 + "px",
+			width : wt + "px",
+			height : ht + "px"
+		});
+		ctain.css({
+			left : lf + "px",
+			top : tp + "px"
+		});
+		img.css({
+			left : lf + "px",
+			top : tp + "px"
+		});
+
+		//初始化切割层显示区域
+		var rect = "rect( " + 0 + "px  " + wt + "px  " + ht + "px  " + 0
+				+ "px )";
+		img.css({
+			"clip" : rect
+		});
+
+		$("#rect").html(img.css("clip"));
+	}
+</script>
+</html>

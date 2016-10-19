@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery append()</title>
+    <style>
+        *{
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+
+</ul>
+</body>
+<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    var leng = 10;
+    var str = "";
+    var imgurl = 'http://happen-app-bucket-02.oss-cn-shanghai.aliyuncs.com/activity/postArticle/1467193957526-4754.jpg';
+    for (var i = 0; i < leng; i++) {
+        str = "<img id='" + i + "' /><h3 id='h" + i + "'></h3><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+        str += "<img src='"+imgurl+"' /><h4 ></h4><img src='https://img.alicdn.com/tps/TB1wZTGKFXXXXbDXpXXXXXXXXXX-1400-700.png'/>"
+
+        $(".list").append(str);
+        if(imgurl!=""){
+            setImageHeight(imgurl, i, 100); //图片url,图片id,100是图片宽度，单位是VW
+        }
+
+    }
+
+    //加载图片之前获取并设置图片高度
+    function setImageHeight(src, id, wd) {
+        var s = imgurl;
+        s=src.replace("oss-cn-hangzhou","img-cn-hangzhou");
+        s=s.replace("oss-cn-shanghai","img-cn-shanghai");
+        $.ajax({
+            url: s + "@info",
+            type: "GET",
+            async: true,
+            success: function(datas) {
+                var w = datas.width;
+                var h = datas.height;
+                var ht = 0;
+                if (w == h) {
+                    ht = wd;
+                    console.log("w==h true" + ht)
+                } else {
+                    ht = wd * h / w;
+                    console.log("w!=h true" + ht);
+                }
+
+                //设置图片高度
+                $("#" + id).attr({
+                    "opacity":0,
+                    "style": "height:" + ht + "vw",
+                    "src": src,
+                    "onload":"FadeIn('"+id+"')"
+                }); //此处成功
+                //设置图片下面的元素距离顶部的高度
+                var top = ht / 2 + 11.5 - 5;
+                console.log(document.getElementById("h" + id)); //null
+                $("#h" + id).attr({
+                    "style": "top:" + top + "vw"
+                }); //此处失败
+            },
+            error: function() {
+
+            }
+        });
+    }
+    function FadeIn(id){
+        var i=0;
+        var fdi=setInterval(function(){
+            i+=0.1;
+            if(i<=1){
+                $("#"+id).css("opacity",i);
+            }else{
+                clearInterval(fdi);
+            }
+
+        },10)
+    }
+
+</script>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="renderer" content="webkit"/>
+ <meta http-equiv="X-UA-Compatible" content="IE=11;IE=10;IE=9; IE=8;" /> 
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11;IE=EmulateIE10;IE=EmulateIE9;IE=EmulateIE8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <meta http-equiv="Page-Exit" content="revealTrans(Duration=3,Transition=23)" >
+ <title>表格切换</title>
+ <style>
+ .fenye_page{
+	height:30px;
+	border-top:1px solid grey;
+	border-bottom:1px solid grey;
+	background-color:#ffffff;
+	line-height:30px;
+	cursor:pointer;
+	text-decoration:none;
+	padding:0 3px;
+	min-width:40px;
+	display:inline-block;
+	text-align:center;
+	vertical-align:middle;
+	font-size:16px;
+	font-family:cursive;
+	-moz-user-select: none; /*火狐*/
+    -webkit-user-select: none;  /*webkit浏览器*/
+    -ms-user-select: none;   /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+    color:#333333;
+    font-size:14px;
+    white-space:nowrap;
+    margin:0;
+}
+.fenye_page:hover{
+	background-color:#ececec;
+}
+.total_count{
+	background-color:#ffffff;
+	border-right:1px solid grey;
+	margin-left:-2px;
+}
+.total_count:hover{
+	background-color:#ffffff;
+}
+.fst_page{
+	color:#428abc;
+	border-left:1px solid grey;
+/* 	padding:0 5px 5px 0; */
+	margin-right:-2px;
+	height:30px;
+	width:30px;
+	line-height:30px;
+	font-size:14px;
+}
+.end_page{
+	height:30px;
+	color:#428abc;
+	border-right:1px solid grey;
+	/* padding:0 0 5px 5px; */
+	margin-left:-2px;
+	width:30px;
+	line-height:30px;
+	font-size:14px;
+}
+.prv_page{
+	color:#428abc;
+	border-left:1px solid grey;
+	margin-right:-2px;
+	width:30px;
+	line-height:30px;
+	font-size:14px;
+}
+.next_page{
+	color:#428abc;
+	border-right:1px solid grey;
+	width:30px;
+	margin-left:-2px;
+	line-height:30px;
+	font-size:14px;
+}
+.idx_page{
+	background-color:#428abc;
+	color:#ffffff;
+}
+.idx_page:hover{
+	background-color:#428abc;
+	color:#ffffff;
+}
+.un_activepage{
+	background-color:#dcdcdc;
+	/* border:1px solid grey; */
+	color:grey;
+}
+.un_activepage:hover{
+	background-color:#dcdcdc;
+	color:grey;
+}
+ #page{
+ 	height:30px;
+ 	line-height:30px;
+ 	border-collapse:collapse;
+ 	border-spacing:0;
+ }
+ </style>
+<body>
+	
+<!-- 控制分页显示位置 -->
+	<table id="page">
+	<tr><td></td></tr>
+	</table>
+
+</body>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	//分页初始化，总条数、每页10条，每次显示5个页码、提交页码函数名、页码显示位置ID
+	PcutInit("356",10,5,"submit","page");
+})
+
+
+//根据页码查询,
+function submit(pageIndex) {
+    //var sortInfo = $.getUrlParam('sortInfo');//判断是哪一个页面的查询
+    var url = "page.html?page="+pageIndex;//此处添加
+    window.location.href=url;
+}
+
+
+//author:oospace
+//address:http://xicer.com
+//email:oospace@foxmail.com
+//获取url地址栏对应参数值
+	(function($) {
+		$.getUrlParam = function(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+			var r = window.location.search.substr(1).match(reg);
+			if (r != null)
+				return unescape(r[2]);
+			return null;
+		};
+	})(jQuery);
+	
+function PcutInit(TotalNum,pNum,mPNum,sbmtName,id){
+
+	var pageIndex=$.getUrlParam("page");
+	if(pageIndex==null)pageIndex=1;
+	
+//总条数(必填)
+var Num=Number(TotalNum);
+//当前页(必填)
+var index = Number(pageIndex);
+/* //每页的条数(可选,默认每页10条) */
+var  pageNum=Number(pNum);  
+/* //最大显示的页码的数目(可选，默认显示5个页码,页码数目必须大于等于1) */
+var  maxPageNum=Number(mPNum);
+
+
+//计算得出总页数
+
+var count = (Num%pageNum)>0?(Num/pageNum+1):(Num/pageNum);
+   count=Math.floor(count);//取整转化为数据类型
+//显示的最小页码,
+var first=1;
+  //显示的最大页码，首先last<=count;其次last是小于等于count的最大数//last=index+maxPageNum/2;
+var last =1;
+var decrease=Math.floor(maxPageNum/2);//当前页向上增加值
+var increase=Math.floor(maxPageNum/2);//当前页向下减少值
+if(maxPageNum>=1){
+  if(maxPageNum==1){//最多显示一页时
+          first=index<=count?index:count;  
+          last=index<=count?index:count;       
+  }else{
+              //first要大于零
+          first=(index-decrease);
+          while(first<=0){
+              first++;
+          }   
+              //first判断显示的最后一页
+          if((count-index)<=decrease){
+              var diff=count-first;
+              while(diff<maxPageNum-1){
+                  if(first==1){
+                      break;
+                  }else{
+                      --first;
+                      diff=count-first;
+                  }
+              }
+          }
+              //last要小于count
+          last=(index+increase);
+          while(last>=1){
+              if(last<=count){
+                  break;
+              }
+              last--;
+          }   
+          //last//判断显示的最后一页与maxPageNum的关系
+          last=last>=maxPageNum?last:(maxPageNum>count?count:maxPageNum);
+      }
+}else{
+  alert("至少需要显示一个页码!");
+}
+   
+  var prev = index - 1;//上一页
+  var next = index+ 1;//下一页   
+   
+  var str = "<tr>";
+  if(count==0){
+      str += "<td><span class='fenye_page total_count fst_page'>共0条</span></td><td>";
+  }else if(index>count||index<=0){
+      str="<td>页码超出范围</td>";
+  }else if (count > 0) {
+ 	 if(index!=1&&count>1){
+          str += "<td ><span class='fenye_page fst_page' onclick='"+sbmtName+"(1);'>▕◖</span></td>";
+      }else{
+     	 str += "<td ><span class='fenye_page fst_page un_activepage'>▕◖</span></td>";
+      }
+ 	 if(index!=1){
+          str +="<td ><span class='fenye_page prv_page' onclick='"+sbmtName+"(" + prev+ ");'>◁</span></td>"; 
+      }else{
+     	 str +="<td ><span class='fenye_page prv_page un_activepage' >◁</span></td>"; 
+      }
+      str += "<td>";
+     /* if(first>1){
+          str += "<span class='fenye_page'>...</span>";
+      }*/
+      var i=1;
+      for(i=first;i<=last; i++){
+          if(i==index){
+              str += "<span class='fenye_page idx_page' >" + i+ "</span>";
+          }else{
+              str += "<span class='fenye_page' onclick='"+sbmtName+"(" + i + ");'>" + i+ "</span>";
+          }
+      } 
+          /*if(last<count){
+              str += "<span class='fenye_page' >...</span></td>"; 
+          }*/
+           
+      
+     
+      if(index<count){
+          str +="</td><td><span class='fenye_page next_page' onclick='"+sbmtName+"("+ next + ");'>▷</span></td>";
+      }else{
+     	 str +="</td><td><span class='fenye_page next_page un_activepage' >▷</span></td>";
+      }
+      
+      if(index!=count&&count>1&&index<count){
+          str += "<td ><span class='fenye_page end_page' onclick='"+sbmtName+"(" + count+ ");'>◗▏</span></td>" ;
+      }else{
+     	 str += "<td ><span class='fenye_page end_page un_activepage' >◗▏</span></td>" ;
+      }
+      str+="<td ><span class='fenye_page total_count' >共"+ Num +"条</span></td>";
+          str+="</tr>";
+  }
+   
+   
+//分页区域填写
+$('#'+id).html(str); 
+}  
+
+</script>
+</html>
