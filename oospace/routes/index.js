@@ -1,7 +1,10 @@
 module.exports=function (app) {
-  var crypto=require('crypto');
-  User=require('../models/user.js');
   app.get('/', function(req, res, next) {
-    res.render('index', { title: 'Thought 、  stories 、 idea' });
+    res.render('index', {
+      title: 'Thought 、  stories 、 idea',
+      user:req.session.user,
+      success:req.flash('success').toString(),
+      error:req.flash('error').toString()
+    });
   });
 }

@@ -1,7 +1,12 @@
+var crypto=require('crypto');
+User=require('../models/user.js');
 module.exports=function (app) {
-    /* GET home page. */
     app.get('/reg',function (req,res) {
-        res.render('reg',{title:'注册'});
+        res.render('reg',{
+            title:'注册',
+            user:req.session.user,
+            success:req.flash('success').toString()
+        });
     })
     app.post('/reg',function (req,res) {
         var name=req.body.name,
