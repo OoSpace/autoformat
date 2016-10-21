@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var login = require('./routes/login');
 var reg = require('./routes/reg');
-var users = require('./routes/users');
+//var users = require('./routes/users');
 
 
 var app = express();
@@ -18,9 +18,9 @@ var flash=require('connect-flash');
 
 
 //DB
-var nmDbEngine='sqlite3';
+//var nmDbEngine='sqlite3';
 //var nmDbEngine='mongoose';
-var notesdb=require('./nodesdb-'+nmDbEngine);
+//var notesdb=require('./nodesdb-'+nmDbEngine);
 
 
 // view engine setup

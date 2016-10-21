@@ -2,6 +2,7 @@
  * Created by oospace on 2016/10/20.
  */
 var monbodb=require('./db');
+var crypto = require('crypto');
 function User(user) {
     this.name=user.name;
     this.password=user.password;
@@ -39,7 +40,7 @@ User.prototype.save=function (callback) {
         });
     });
 };
-User.prototype.get=function (name,callback) {
+User.get=function (name,callback) {
     //打开数据库
     monbodb.open(function(err,db){
         if(err){

@@ -1,11 +1,11 @@
 var crypto=require('crypto');
-User=require('../models/user.js');
+var User=require('../models/user.js');
 module.exports=function (app) {
     app.get('/reg',function (req,res) {
         res.render('reg',{
             title:'注册',
-            user:req.session.user,
-            success:req.flash('success').toString()
+            user:req.session.user||'',
+            success:req.flash('success').toString()||''
         });
     })
     app.post('/reg',function (req,res) {
@@ -20,6 +20,7 @@ module.exports=function (app) {
         //生成密码的md5值
         var md5=crypto.createHash('md5'),
             password=md5.update(req.body.password).digest('hex');
+
         var newUser=new User({
             name:req.body.name,
             password:password,
