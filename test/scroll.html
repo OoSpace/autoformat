@@ -1,0 +1,36 @@
+HTML代码：
+        <div id="wrap">
+            <div class="wrapIn">
+                <div id="text1">行者行于路，漫步起烟云，但凭人行处，不知几人闻</div>
+                <div id="text2"></div>
+            </div>
+        </div>
+                    
+CSS代码：
+        #wrap{
+            overflow: hidden;
+            width: 815px;
+        }
+        #wrap .wrapIn{
+            width: 8000%;
+            height: 30px;
+        }
+        #wrap .wrapIn div{
+            float: left;
+            margin-right: 50px;
+        }
+                    
+JS代码：
+        var wrap = document.getElementById("wrap");
+        var text1 = document.getElementById("text1");
+        var text2 = document.getElementById("text2");
+        text2.innerHTML = document.getElementById("text1").innerHTML;
+
+        setInterval(function() {
+            if (wrap.scrollLeft - text2.offsetWidth >= 0) {
+                wrap.scrollLeft -= text1.offsetWidth;
+            } else {
+                wrap.scrollLeft++;
+            }
+        }, 20);
+                    
