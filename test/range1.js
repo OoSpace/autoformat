@@ -3,7 +3,7 @@
 * @Last modified time: 2016-09-28T13:42:26+08:00
 */
 
-
+var f=new Function("x","y","return x*y;")
 
 function inherit(p) {
   if(p==null)throw TypeError();

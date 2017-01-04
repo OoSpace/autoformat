@@ -9,6 +9,7 @@ function Range(from,to){
     //var r=inherit(range.methods);
     this.from=from;
     this.to=to;
+    this["book ddd"]="sss";
    // return r;
 }
 Range.prototype={

@@ -4,6 +4,19 @@
  */
 
 //document
+document.cookie
+
+document.domain
+
+document.lastModified
+
+document.location
+
+document.referrer
+
+document.title
+
+document.URL
 
 
 //Event
